@@ -5,4 +5,5 @@ vim.cmd("set shiftwidth=2")
 
 vim.g.mapleader = " "
 
-vim.keymap.set('n', "<C-z>", "undo<CR>", {})
+vim.keymap.set('n', "<C-z>", ":undo<CR>", {})
+vim.keymap.set('n', "<C-s>", ":wa<CR>", {})
