@@ -1,6 +1,6 @@
 return {
   "rebelot/kanagawa.nvim",
   config = function()
-    require("kanagawa").load("dragon") 
+    require("kanagawa").load("dragon")
   end
 }
