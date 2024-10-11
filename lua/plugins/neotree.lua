@@ -8,7 +8,6 @@ return {
     "3rd/image.nvim",
   },
   config = function()
-    vim.keymap.set('n', "<C-h>", ":Neotree filesystem toggle left<CR>", {})
-  end
+    vim.keymap.set("n", "<C-h>", ":Neotree filesystem toggle left<CR>", {})
+  end,
 }
-

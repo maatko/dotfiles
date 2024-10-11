@@ -3,7 +3,7 @@ return {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -14,9 +14,9 @@ return {
           "clangd",
           "jdtls",
           "gopls",
-        }
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -29,9 +29,9 @@ return {
       lspconfig.jdtls.setup({})
       lspconfig.gopls.setup({})
 
-      vim.keymap.set('n', "<leader>d", vim.lsp.buf.hover, {})
-      vim.keymap.set('n', "<C-g>", vim.lsp.buf.definition, {})
-      vim.keymap.set({'n', 'v'}, "<leader>g", vim.lsp.buf.code_action, {})
-    end
-  }
+      vim.keymap.set("n", "<leader>d", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<C-g>", vim.lsp.buf.definition, {})
+      vim.keymap.set({ "n", "v" }, "<leader>g", vim.lsp.buf.code_action, {})
+    end,
+  },
 }
