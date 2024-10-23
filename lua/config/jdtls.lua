@@ -59,7 +59,6 @@ local function get_jdtls_config(jdtls)
 			java = {
 				format = {
 					enabled = true,
-					-- Use the Google Style guide for code formattingh
 					settings = {
 						url = vim.fn.stdpath("config") .. "/lang_servers/intellij-java-google-style.xml",
 						profile = "GoogleStyle",
@@ -76,9 +75,6 @@ local function get_jdtls_config(jdtls)
 				},
 				contentProvider = {
 					preferred = "fernflower",
-				},
-				saveActions = {
-					organizeImports = true,
 				},
 				sources = {
 					organizeImports = {

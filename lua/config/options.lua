@@ -12,8 +12,6 @@ vim.opt.expandtab = true   -- convert tabs to spaces
 vim.opt.shiftwidth = 2     -- number of spaces inserted for each indentation level
 vim.opt.tabstop = 2        -- number of spaces inserted for tab character
 vim.opt.softtabstop = 2    -- number of spaces inserted for <Tab> key
-vim.opt.smartindent = true -- enable smart indentation
-vim.opt.breakindent = true -- enable line breaking indentation
 
 -- general behaviors
 vim.opt.backup = false            -- disable backup file creation
