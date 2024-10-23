@@ -5,6 +5,7 @@ return {
       require("mason").setup()
     end,
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -29,7 +30,7 @@ return {
 
       -- all the language servers
       lspconfig.lua_ls.setup({ capabilities = capabilities })
-      --lspconfig.clangd.setup({ capabilities = capabilities })
+      lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
 
       vim.keymap.set("n", "<leader>d", vim.lsp.buf.hover, {})
