@@ -17,3 +17,6 @@ vim.keymap.set("n", "<C-z>", ":undo<CR>", {})
 
 -- quick save
 vim.keymap.set("n", "<C-s>", ":wa<CR>", {})
+
+-- terminal
+vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm size=10 name=term<CR>", { desc = "Toggles terminal window" })
