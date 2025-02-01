@@ -59,6 +59,11 @@ local function get_jdtls_config(jdtls)
       java = {
         format = {
           enabled = false,
+          settings = {
+            url =
+            "https://raw.githubusercontent.com/google/styleguide/refs/heads/gh-pages/intellij-java-google-style.xml",
+            profile = "GoogleStyle",
+          },
         },
         eclipse = {
           downloadSource = true,
