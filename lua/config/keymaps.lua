@@ -15,8 +15,8 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode" })
 -- undo
 vim.keymap.set("n", "<C-z>", ":undo<CR>", {})
 
+-- close buffer
+vim.keymap.set("n", "<leader><Del>", ":bd<CR>", {})
+
 -- quick save
 vim.keymap.set("n", "<C-s>", ":wa<CR>", {})
-
--- terminal
-vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm size=10 name=term<CR>", { desc = "Toggles terminal window" })

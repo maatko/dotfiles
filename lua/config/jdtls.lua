@@ -57,38 +57,13 @@ local function get_jdtls_config(jdtls)
     root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "build.gradle", "pom.xml" }),
     settings = {
       java = {
-        format = {
-          enabled = false,
-          settings = {
-            url =
-            "https://raw.githubusercontent.com/google/styleguide/refs/heads/gh-pages/intellij-java-google-style.xml",
-            profile = "GoogleStyle",
-          },
-        },
-        eclipse = {
-          downloadSource = true,
-        },
-        maven = {
-          downloadSources = true,
-        },
-        signatureHelp = {
-          enabled = true,
-        },
-        contentProvider = {
-          preferred = "fernflower",
-        },
-        sources = {
-          organizeImports = {
-            starThreshold = 9999,
-            staticThreshold = 9999,
-          },
-        },
-        configuration = {
-          updateBuildConfiguration = "interactive",
-        },
-        referencesCodeLens = {
-          enabled = true,
-        },
+        format = { enabled = false },
+        eclipse = { downloadSource = true },
+        maven = { downloadSources = true },
+        signatureHelp = { enabled = true },
+        contentProvider = { preferred = "fernflower" },
+        configuration = { updateBuildConfiguration = "interactive" },
+        referencesCodeLens = { enabled = true },
         inlayHints = {
           parameterNames = {
             enabled = "all",
@@ -97,9 +72,7 @@ local function get_jdtls_config(jdtls)
       },
     },
     capabilities = lsp.default_capabilities(),
-    init_options = {
-      extendedClientCapabilities = extendedClientCapabilities,
-    },
+    init_options = { extendedClientCapabilities = extendedClientCapabilities },
     on_attach = function(_, _)
       -- enable jdtls commands to be used in neovim
       require("jdtls.setup").add_commands()

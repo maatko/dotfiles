@@ -7,6 +7,7 @@ return {
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
       vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>b", builtin.buffers, {})
     end,
   },
   {
@@ -16,6 +17,12 @@ return {
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
+          },
+        },
+        defaults = {
+          mappings = {
+            n = { ["<Del>"] = require("telescope.actions").delete_buffer },
+            i = { ["<Del>"] = require("telescope.actions").delete_buffer },
           },
         },
       })

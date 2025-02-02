@@ -9,12 +9,8 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.prettier,
-          null_ls.builtins.formatting.gofumpt,
-          null_ls.builtins.formatting.goimports_reviser,
-          null_ls.builtins.formatting.golines,
+          null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.google_java_format,
-          require("none-ls.diagnostics.eslint"),
         },
       })
 
@@ -32,11 +28,7 @@ return {
       require("mason-null-ls").setup({
         ensure_installed = {
           "stylua",
-          "prettier",
-          "gofumpt",
-          "goimports_reviser",
-          "golines",
-          "eslint_d",
+          "black",
           "google-java-format",
         },
       })
