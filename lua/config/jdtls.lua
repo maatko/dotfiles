@@ -41,6 +41,7 @@ local function configure_jdtls()
 
 	-- location of `jdtls` package
 	local jdtls_path = registry.get_package("jdtls"):get_install_path()
+	local jdebug_adapter = registry.get_package("java-debug-adapter"):get_install_path()
 
 	-- configuration
 	local config = jdtls_path .. "/config_"
@@ -57,7 +58,8 @@ local function configure_jdtls()
 	return vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
 		config,
 		jdtls_path .. "/lombok.jar",
-		jdtls_path .. "/workspace/"
+		jdtls_path .. "/workspace/",
+		vim.fn.glob(jdebug_adapter .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
 end
 
 local function get_jdtls_config(jdtls)
@@ -65,7 +67,7 @@ local function get_jdtls_config(jdtls)
 	local lsp = require("cmp_nvim_lsp")
 
 	-- get all the things needed for the configuration to work
-	local launcher, configuration, lombok, workspace = configure_jdtls()
+	local launcher, configuration, lombok, workspace, jdebug = configure_jdtls()
 
 	-- fet the default extended client capablities of the JDTLS language server
 	local extendedClientCapabilities = jdtls.extendedClientCapabilities
@@ -114,7 +116,12 @@ local function get_jdtls_config(jdtls)
 			},
 		},
 		capabilities = lsp.default_capabilities(),
-		init_options = { extendedClientCapabilities = extendedClientCapabilities },
+		init_options = {
+			extendedClientCapabilities = extendedClientCapabilities,
+			bundles = {
+				jdebug,
+			},
+		},
 		on_attach = function(_, _)
 			-- enable jdtls commands to be used in neovim
 			require("jdtls.setup").add_commands()
