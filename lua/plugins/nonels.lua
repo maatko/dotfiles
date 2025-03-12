@@ -10,7 +10,6 @@ return {
 				sources = {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.black,
-					null_ls.builtins.formatting.google_java_format,
 				},
 			})
 
@@ -29,7 +28,6 @@ return {
 				ensure_installed = {
 					"stylua",
 					"black",
-					"google-java-format",
 					"java-debug-adapter",
 				},
 			})

@@ -98,7 +98,13 @@ local function get_jdtls_config(jdtls)
 		root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "build.gradle", "pom.xml" }),
 		settings = {
 			java = {
-				format = { enabled = false },
+				format = {
+          enabled = true,
+          settings = {
+            url = vim.fn.getcwd() .. "/code-style.xml",
+            profile = "GoogleStyle",
+          },
+        },
 				eclipse = { downloadSource = true },
 				maven = { downloadSources = true },
 				signatureHelp = { enabled = true },
