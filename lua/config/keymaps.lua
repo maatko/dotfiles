@@ -12,9 +12,6 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left in visual mode" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode" })
 
--- undo
-vim.keymap.set("n", "<C-z>", ":undo<CR>", {})
-
 -- close buffer
 vim.keymap.set("n", "<leader><Del>", ":bd<CR>", {})
 
