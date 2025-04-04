@@ -99,12 +99,12 @@ local function get_jdtls_config(jdtls)
 		settings = {
 			java = {
 				format = {
-          enabled = true,
-          settings = {
-            url = vim.fn.getcwd() .. "/code-style.xml",
-            profile = "GoogleStyle",
-          },
-        },
+					enabled = true,
+					settings = {
+						url = vim.fn.getcwd() .. "/code-style.xml",
+						profile = "GoogleStyle",
+					},
+				},
 				eclipse = { downloadSource = true },
 				maven = { downloadSources = true },
 				signatureHelp = { enabled = true },
@@ -126,6 +126,25 @@ local function get_jdtls_config(jdtls)
 			extendedClientCapabilities = extendedClientCapabilities,
 			bundles = {
 				jdebug,
+			},
+			settings = {
+				java = {
+					implementationsCodeLens = { enabled = true },
+					imports = {
+						gradle = {
+							enabled = true,
+							wrapper = {
+								enabled = true,
+								checksums = {
+									{
+										sha256 = "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f",
+										allowed = true,
+									},
+								},
+							},
+						},
+					},
+				},
 			},
 		},
 		on_attach = function(_, _)
