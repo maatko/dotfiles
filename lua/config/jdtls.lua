@@ -1,11 +1,12 @@
 local PROMPT_LINUX = "find /usr/lib/jvm -name 'javac' 2>/dev/null"
-local PROMPT_WINDOWS = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"(Get-ChildItem -Path 'C:/Program Files*' -Filter 'javac.exe' -Recurse -ErrorAction SilentlyContinue).DirectoryName\""
+local PROMPT_WINDOWS =
+"powershell -NoProfile -ExecutionPolicy Bypass -Command \"(Get-ChildItem -Path 'C:/Program Files*' -Filter 'javac.exe' -Recurse -ErrorAction SilentlyContinue).DirectoryName\""
 
 local function get_runtimes_linux()
   local runtimes = {}
 
   local command = PROMPT_LINUX
-  if vim.fn.has("win32") or vim.fn.has("win64") then
+  if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") == 1 then
     command = PROMPT_WINDOWS
   end
 
@@ -32,7 +33,7 @@ local function get_runtimes_linux()
       end
 
       local offset = 10
-      if vim.fn.has("win32") or vim.fn.has("win64") then
+      if vim.fn.has("win64") == 1 or vim.fn.has("win32") == 1 or vim.fn.has("win16") == 1 then
         offset = 3
       end
 
