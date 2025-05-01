@@ -2,7 +2,7 @@ local PROMPT_LINUX = "find /usr/lib/jvm -name 'javac' 2>/dev/null"
 local PROMPT_WINDOWS =
 "powershell -NoProfile -ExecutionPolicy Bypass -Command \"(Get-ChildItem -Path 'C:/Program Files*' -Filter 'javac.exe' -Recurse -ErrorAction SilentlyContinue).DirectoryName\""
 
-local function get_runtimes_linux()
+local function get_runtimes()
   local runtimes = {}
 
   local command = PROMPT_LINUX
@@ -76,15 +76,15 @@ local function configure_jdtls()
       vim.fn.glob(jdebug_adapter .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
 end
 
-local function get_jdtls_config(jdtls)
+local function get_jdtls_config()
   -- used for accessing capabilities
-  local lsp = require("cmp_nvim_lsp")
+  local lsp = require("blink.cmp")
 
   -- get all the things needed for the configuration to work
   local launcher, configuration, lombok, workspace, jdebug = configure_jdtls()
 
   -- fet the default extended client capablities of the JDTLS language server
-  local extendedClientCapabilities = jdtls.extendedClientCapabilities
+  local extendedClientCapabilities = lsp.get_lsp_capabilities()
   extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
   return {
@@ -112,6 +112,9 @@ local function get_jdtls_config(jdtls)
     root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "build.gradle", "pom.xml" }),
     settings = {
       java = {
+        import = {
+          enabled = true,
+        },
         format = {
           enabled = true,
           settings = {
@@ -125,7 +128,7 @@ local function get_jdtls_config(jdtls)
         contentProvider = { preferred = "fernflower" },
         configuration = {
           updateBuildConfiguration = "interactive",
-          runtimes = get_runtimes_linux(),
+          runtimes = get_runtimes(),
         },
         referencesCodeLens = { enabled = true },
         inlayHints = {
@@ -135,7 +138,7 @@ local function get_jdtls_config(jdtls)
         },
       },
     },
-    capabilities = lsp.default_capabilities(),
+    capabilities = lsp.get_lsp_capabilities(),
     init_options = {
       extendedClientCapabilities = extendedClientCapabilities,
       bundles = {
@@ -149,12 +152,7 @@ local function get_jdtls_config(jdtls)
               enabled = true,
               wrapper = {
                 enabled = true,
-                checksums = {
-                  {
-                    sha256 = "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f",
-                    allowed = true,
-                  },
-                },
+                checksums = {},
               },
             },
           },
