@@ -78,13 +78,13 @@ end
 
 local function get_jdtls_config()
   -- used for accessing capabilities
-  local lsp = require("blink.cmp")
+  local lsp = require("cmp_nvim_lsp")
 
   -- get all the things needed for the configuration to work
   local launcher, configuration, lombok, workspace, jdebug = configure_jdtls()
 
   -- fet the default extended client capablities of the JDTLS language server
-  local extendedClientCapabilities = lsp.get_lsp_capabilities()
+  local extendedClientCapabilities = lsp.default_capabilities()
   extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
   return {
@@ -138,7 +138,7 @@ local function get_jdtls_config()
         },
       },
     },
-    capabilities = lsp.get_lsp_capabilities(),
+    capabilities = lsp.default_capabilities(),
     init_options = {
       extendedClientCapabilities = extendedClientCapabilities,
       bundles = {
@@ -147,15 +147,6 @@ local function get_jdtls_config()
       settings = {
         java = {
           implementationsCodeLens = { enabled = true },
-          imports = {
-            gradle = {
-              enabled = true,
-              wrapper = {
-                enabled = true,
-                checksums = {},
-              },
-            },
-          },
         },
       },
     },

@@ -1,22 +1,27 @@
 return {
-	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets" },
-	version = "1.*",
-	opts = {
-		keymap = {
-			preset = "none",
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
-			["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
-			["<Esc>"] = { "cancel", "fallback" },
-			["<CR>"] = { "select_and_accept", "fallback" },
-			["<Up>"] = { "select_prev", "fallback" },
-			["<Down>"] = { "select_next", "fallback" },
-		},
-		appearance = { nerd_font_variant = "mono" },
-		fuzzy = { implementation = "prefer_rust_with_warning" },
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-		},
+	"hrsh7th/nvim-cmp",
+	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
 	},
-	opts_extend = { "sources.default" },
+	config = function()
+		local cmp = require("cmp")
+		cmp.setup({
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
+			mapping = cmp.mapping.preset.insert({
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-Space>"] = cmp.mapping.complete(),
+				["<Esc>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
+			}),
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+			}, {
+				{ name = "buffer" },
+			}),
+		})
+	end,
 }

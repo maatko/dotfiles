@@ -20,16 +20,17 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       local telescope = require("telescope.builtin")
       local lspconfig = require("lspconfig")
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
 
+      vim.keymap.set({ "n", "v" }, "<leader>g", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>d", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<C-g>", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>r", telescope.lsp_references, {})
