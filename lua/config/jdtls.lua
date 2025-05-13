@@ -50,12 +50,9 @@ local function get_runtimes()
 end
 
 local function configure_jdtls()
-  -- get the registry from mason
-  local registry = require("mason-registry")
-
   -- location of `jdtls` package
-  local jdtls_path = registry.get_package("jdtls"):get_install_path()
-  local jdebug_adapter = registry.get_package("java-debug-adapter"):get_install_path()
+  local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
+  local jdebug_adapter = vim.fn.expand("$MASON/packages/java-debug-adapter")
 
   -- configuration
   local config = jdtls_path .. "/config_"
