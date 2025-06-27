@@ -14,6 +14,8 @@ return {
           "pyright",
           "clangd",
           "jdtls",
+          "gopls",
+          "templ",
         },
       })
     end,
@@ -29,6 +31,8 @@ return {
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
+      lspconfig.templ.setup({ capabilities = capabilities })
 
       vim.keymap.set({ "n", "v" }, "<leader>g", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>d", vim.lsp.buf.hover, {})
