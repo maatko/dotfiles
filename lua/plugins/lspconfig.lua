@@ -16,6 +16,10 @@ return {
           "jdtls",
           "gopls",
           "templ",
+          "tailwindcss",
+          "html",
+          "cssls",
+          "emmet_ls",
         },
       })
     end,
@@ -33,6 +37,10 @@ return {
       lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
       lspconfig.templ.setup({ capabilities = capabilities })
+      lspconfig.tailwindcss.setup({ capabilities = capabilities })
+      lspconfig.html.setup({ capabilities = capabilities })
+      lspconfig.cssls.setup({ capabilities = capabilities })
+      lspconfig.emmet_ls.setup({ capabilities = capabilities })
 
       vim.keymap.set({ "n", "v" }, "<leader>g", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>d", vim.lsp.buf.hover, {})
