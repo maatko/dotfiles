@@ -2,3 +2,12 @@
 
 rm -rf ~/.config/nvim
 ln -s $(pwd)/nvim ~/.config/nvim
+
+rm -rf ~/.config/alacritty
+ln -s $(pwd)/alacritty ~/.config/alacritty
+
+rm ~/.tmux.conf
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+
+rm ~/.bashrc
+ln -s $(pwd)/.bashrc ~/.bashrc
