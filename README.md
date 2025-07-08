@@ -1,2 +1,2 @@
-# nvim
-my neovim configuration
+# dotfiles
+my linux dotfile configurations
