@@ -4,6 +4,7 @@ return {
     opts = {
       ensure_installed = {
         "tailwindcss",
+        "omnisharp",
         "emmet_ls",
         "pyright",
         "lua_ls",
