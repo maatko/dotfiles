@@ -32,6 +32,18 @@ return {
 					-- telescope
 					vim.keymap.set("n", "<leader>r", telescope.lsp_references, {})
 					vim.keymap.set("n", "<leader>i", telescope.lsp_implementations, {})
+
+					-- razor
+					vim.filetype.add({
+						extension = {
+							cshtml = "razor",
+							razor = "razor",
+						},
+						pattern = {
+							[".*%.cshtml"] = "razor",
+							[".*%.razor"] = "razor",
+						},
+					})
 				end,
 			},
 			{
