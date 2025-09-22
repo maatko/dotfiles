@@ -14,6 +14,7 @@ return {
 				"python",
 				"razor",
 				"java",
+				"http",
 				"html",
 				"css",
 				"vim",
