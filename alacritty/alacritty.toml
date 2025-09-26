@@ -1,3 +1,7 @@
+general.import = [
+  "~/.config/alacritty/themes/cyberdream.toml"
+]
+
 [font]
 size = 14.0
 
@@ -16,3 +20,6 @@ style = "Italic"
 [font.bold_italic]
 family = "SFMono Nerd Font"
 style = "Bold Italic"
+
+[env]
+TERM = "xterm-256color"
