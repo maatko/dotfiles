@@ -9,6 +9,7 @@ return {
 				"pyright",
 				"lua_ls",
 				"clangd",
+				"vue_ls",
 				"ts_ls",
 				"cssls",
 				"vimls",
@@ -22,6 +23,24 @@ return {
 				"neovim/nvim-lspconfig",
 				config = function()
 					local telescope = require("telescope.builtin")
+
+					-- vue
+					vim.lsp.config.ts_ls = {
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vim.fn.expand(
+										vim.fn.stdpath("data")
+											.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+									),
+									languages = { "vue" },
+									configNamespace = "typescript",
+								},
+							},
+						},
+						filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					}
 
 					-- lsp
 					vim.keymap.set({ "n", "v" }, "<leader>g", vim.lsp.buf.code_action, {})
