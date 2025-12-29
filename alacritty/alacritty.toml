@@ -6,17 +6,17 @@ general.import = [
 size = 14.0
 
 [font.normal]
-family = "SFMono Nerd Font"
+family = "Agave Nerd Font Mono"
 style = "Medium"
 
 [font.bold]
-family = "SFMono Nerd Font"
+family = "Agave Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "SFMono Nerd Font"
+family = "Agave Nerd Font Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "SFMono Nerd Font"
+family = "Agave Nerd Font Mono"
 style = "Bold Italic"

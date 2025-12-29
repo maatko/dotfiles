@@ -10,6 +10,7 @@ return {
 				"lua_ls",
 				"clangd",
 				"vue_ls",
+				"eslint",
 				"ts_ls",
 				"cssls",
 				"vimls",
