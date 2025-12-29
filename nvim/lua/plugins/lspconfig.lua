@@ -4,7 +4,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"tailwindcss",
-				"omnisharp",
 				"emmet_ls",
 				"pyright",
 				"lua_ls",
@@ -68,7 +67,12 @@ return {
 			},
 			{
 				"mason-org/mason.nvim",
-				opts = {},
+				opts = {
+					registries = {
+						"github:Crashdummyy/mason-registry",
+						"github:mason-org/mason-registry",
+					},
+				},
 			},
 		},
 	},
