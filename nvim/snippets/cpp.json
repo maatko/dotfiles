@@ -1,0 +1,49 @@
+{
+  "Header Guard": {
+    "prefix": "hguard",
+    "body": [
+      "#ifndef ${1:CLASS_H}",
+      "#define $1",
+      "",
+      "$0",
+      "",
+      "#endif // $1"
+    ],
+    "description": "Insert header guard"
+  },
+  "Extern C Block": {
+    "prefix": "externc",
+    "body": [
+      "#ifdef __cplusplus",
+      "extern \"C\" {",
+      "#endif",
+      "",
+      "$0",
+      "",
+      "#ifdef __cplusplus",
+      "}",
+      "#endif"
+    ],
+    "description": "Wrap with extern C block"
+  },
+  "Complete C Header": {
+    "prefix": "cheader",
+    "body": [
+      "#ifndef ${1:CLASS_H}",
+      "#define $1",
+      "",
+      "#ifdef __cplusplus",
+      "extern \"C\" {",
+      "#endif",
+      "",
+      "$0",
+      "",
+      "#ifdef __cplusplus",
+      "}",
+      "#endif",
+      "",
+      "#endif // $1"
+    ],
+    "description": "Complete C header with guard and extern C"
+  }
+}
